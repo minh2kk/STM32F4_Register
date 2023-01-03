@@ -1,0 +1,8 @@
+Dependencies for Project 'STM32F407VET6', Target 'STM32F407VET6': (DO NOT MODIFY !)
+CompilerVersion: 6140000::V6.14::ARMCLANG
+F (..\Libraries\Inc\rcc.h)(0x63B43FFB)()
+F (..\User\main.c)(0x63B43FA7)(-xc -std=c99 --target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -c-fno-rtti -funsigned-char -fshort-enums -fshort-wchar-D__EVAL -gdwarf-3 -O1 -ffunction-sections -Weverything -Wno-packed -Wno-reserved-id-macro -Wno-unused-macros -Wno-documentation-unknown-command -Wno-documentation -Wno-license-management -Wno-parentheses-equality -I ../User/Inc -I ../Libraries/Inc-IC:/Users/MINH/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.8.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-D__UVISION_VERSION="531" -DSTM32F407xx-o ./objects/main.o -MD)
+I (..\User\Inc\main.h)(0x63B43FF1)
+I (C:\Keil_v5\ARM\ARMCLANG\include\stdio.h)(0x5ED6DED4)
+I (..\User\Inc\define.h)(0x63B43FF1)
+F (..\StartUp\startup_stm32f40xx.s)(0x62051C83)(--target=arm-arm-none-eabi -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -masm=auto -c-gdwarf-3 -Wa,armasm,--pd,"__EVAL SETA 1" -I ../User -I ../Libraries/Inc -I ../StartUp-IC:/Users/MINH/AppData/Local/Arm/Packs/Keil/STM32F4xx_DFP/2.8.0/Drivers/CMSIS/Device/ST/STM32F4xx/Include-IC:/Keil_v5/ARM/CMSIS/Include-Wa,armasm,--pd,"__UVISION_VERSION SETA 531" -Wa,armasm,--pd,"STM32F407xx SETA 1"-o ./objects/startup_stm32f40xx.o)
