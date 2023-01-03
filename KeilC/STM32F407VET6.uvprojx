@@ -384,9 +384,9 @@
           <GroupName>Libraries</GroupName>
           <Files>
             <File>
-              <FileName>rcc.h</FileName>
-              <FileType>5</FileType>
-              <FilePath>..\Libraries\Inc\rcc.h</FilePath>
+              <FileName>rcc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Libraries\Src\rcc.c</FilePath>
             </File>
           </Files>
         </Group>

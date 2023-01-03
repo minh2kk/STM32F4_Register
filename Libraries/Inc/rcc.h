@@ -3,7 +3,7 @@
 
 #include "define.h"
 
-
+void RCC_Config(void);
 
 
 #endif
