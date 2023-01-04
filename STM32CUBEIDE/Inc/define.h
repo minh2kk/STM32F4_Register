@@ -1,8 +1,11 @@
 #ifndef	INC_DEFINE_H
 #define INC_DEFINE_H
 
+#include <stdint.h>
 #define __IO	volatile
 
+#define SET		1
+#define RESET	0
 
 			/*Bus AHB1*/
 #define AHB1_BASE_ADDR			0x40020000UL
@@ -14,9 +17,24 @@
 #define GPIOE_BASE_ADDR			0x40021000UL
 #define GPIOF_BASE_ADDR			0x40021400UL
 
-#define RCC_BASE_ADDR			0x40023800UL
+//#define RCC_BASE_ADDR			0x40023800UL
 #define DMA1_BASE_ADDR			0x40026000UL
 #define DMA2_BASE_ADDR			0x40026400UL
+
+#define FLASH_REG_BASE_ADDR		0x40023C00UL
+
+typedef struct
+{
+  __IO uint32_t ACR;      /*!< FLASH access control register,   Address offset: 0x00 */
+  __IO uint32_t KEYR;     /*!< FLASH key register,              Address offset: 0x04 */
+  __IO uint32_t OPTKEYR;  /*!< FLASH option key register,       Address offset: 0x08 */
+  __IO uint32_t SR;       /*!< FLASH status register,           Address offset: 0x0C */
+  __IO uint32_t CR;       /*!< FLASH control register,          Address offset: 0x10 */
+  __IO uint32_t OPTCR;    /*!< FLASH option control register ,  Address offset: 0x14 */
+  __IO uint32_t OPTCR1;   /*!< FLASH option control register 1, Address offset: 0x18 */
+} FLASH_TypeDef;
+
+#define FLASH ((FLASH_TypeDef*)FLASH_REG_BASE_ADDR)
 
 
 			/*Bus APB2*/
@@ -71,6 +89,9 @@
 #define DAC_BASE_ADDR			0x40007400UL
 #define UART7_BASE_ADDR			0x40007800UL
 #define UART8_BASE_ADDR			0x40007C00UL
+
+
+
 
 #endif
 
