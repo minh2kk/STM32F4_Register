@@ -41,9 +41,79 @@ typedef struct{
 }RCC_TypeDef;
 
 #define RCC_BASE_ADDR			0x40023800UL
+
+
+/*
+ * AHB1ENR
+ * */
+#define CLOCK_GPIOA			0
+#define CLOCK_GPIOB			1
+#define CLOCK_GPIOC			2
+#define CLOCK_GPIOD			3
+#define CLOCK_GPIOE			4
+#define CLOCK_GPIOF			5
+#define CLOCK_DMA1			21
+#define CLOCK_DMA2			22
+
+
+/*
+ * APB1ENR
+ * */
+#define CLOCK_TIM2			0
+#define CLOCK_TIM3			1
+#define CLOCK_TIM4			2
+#define CLOCK_TIM5			3
+#define CLOCK_TIM6			4
+#define CLOCK_TIM7			5
+#define CLOCK_TIM12			6
+#define CLOCK_TIM13			7
+#define CLOCK_TIM14			8
+#define CLOCK_WWDG			11
+#define CLOCK_SPI2			14
+#define CLOCK_SPI3			13
+#define CLOCK_USART2		17
+#define CLOCK_USART3		18
+#define CLOCK_UART4			19
+#define CLOCK_UART5			20
+#define CLOCK_I2C1			21
+#define CLOCK_I2C2			22
+#define CLOCK_I2C3			23
+#define CLOCK_PWR			28
+
+
+/*
+ * APB2ENR
+ * */
+#define CLOCK_TIM1			0
+#define CLOCK_TIM8			1
+#define CLOCK_USART1		4
+#define CLOCK_USART6		5
+#define CLOCK_ADC1			8
+#define CLOCK_ADC2			9
+#define CLOCK_ADC3			10
+#define CLOCK_SDIO			11
+#define CLOCK_SPI1			12
+#define CLOCK_TIM9			16
+#define CLOCK_TIM10			17
+#define CLOCK_TIM11			18
+
 #define RCC ((RCC_TypeDef*)RCC_BASE_ADDR)
+
+/*
+ * Order of RCC_PERIPH_EN() Function
+ * */
+#define RCC_AHB1ENR	0
+#define RCC_APB1ENR	1
+#define RCC_APB2ENR	2
+
+#define DISABLE		0
+#define ENABLE		1
+
+
+
 void RCC_DeInit(void);
 void RCC_Init(void);
+void RCC_PERIPH_Config(uint32_t Source, uint32_t Periph_Name, uint32_t NewState);
 void HSE_Config(uint32_t PLL_M, uint32_t PLL_N, uint32_t PLL_P, uint32_t PLL_Q);
 
 #endif

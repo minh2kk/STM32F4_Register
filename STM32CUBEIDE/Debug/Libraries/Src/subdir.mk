@@ -5,12 +5,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Libraries/Src/gpio.c \
 ../Libraries/Src/rcc.c 
 
 OBJS += \
+./Libraries/Src/gpio.o \
 ./Libraries/Src/rcc.o 
 
 C_DEPS += \
+./Libraries/Src/gpio.d \
 ./Libraries/Src/rcc.d 
 
 
@@ -21,7 +24,7 @@ Libraries/Src/%.o Libraries/Src/%.su: ../Libraries/Src/%.c Libraries/Src/subdir.
 clean: clean-Libraries-2f-Src
 
 clean-Libraries-2f-Src:
-	-$(RM) ./Libraries/Src/rcc.d ./Libraries/Src/rcc.o ./Libraries/Src/rcc.su
+	-$(RM) ./Libraries/Src/gpio.d ./Libraries/Src/gpio.o ./Libraries/Src/gpio.su ./Libraries/Src/rcc.d ./Libraries/Src/rcc.o ./Libraries/Src/rcc.su
 
 .PHONY: clean-Libraries-2f-Src
 
