@@ -5,29 +5,23 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Src/main.c \
-../Src/syscalls.c \
-../Src/sysmem.c 
+../Libraries/Src/rcc.c 
 
 OBJS += \
-./Src/main.o \
-./Src/syscalls.o \
-./Src/sysmem.o 
+./Libraries/Src/rcc.o 
 
 C_DEPS += \
-./Src/main.d \
-./Src/syscalls.d \
-./Src/sysmem.d 
+./Libraries/Src/rcc.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Src/%.o Src/%.su: ../Src/%.c Src/subdir.mk
+Libraries/Src/%.o Libraries/Src/%.su: ../Libraries/Src/%.c Libraries/Src/subdir.mk
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32 -DSTM32F4 -DSTM32F407VETx -c -I../Inc -I"E:/Learn_Embedded/STM32F4_Register/STM32CUBEIDE/Libraries/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
-clean: clean-Src
+clean: clean-Libraries-2f-Src
 
-clean-Src:
-	-$(RM) ./Src/main.d ./Src/main.o ./Src/main.su ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+clean-Libraries-2f-Src:
+	-$(RM) ./Libraries/Src/rcc.d ./Libraries/Src/rcc.o ./Libraries/Src/rcc.su
 
-.PHONY: clean-Src
+.PHONY: clean-Libraries-2f-Src
 
