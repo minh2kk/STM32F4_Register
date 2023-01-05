@@ -63,6 +63,7 @@ void HSE_Config(uint32_t PLL_M, uint32_t PLL_N, uint32_t PLL_P, uint32_t PLL_Q){
  *  ****************************************************************************************************
  *
  */
+
 void RCC_PERIPH_Config(uint32_t Source, uint32_t Periph_Name, uint32_t NewState){
 
 	if(Source == RCC_AHB1ENR){

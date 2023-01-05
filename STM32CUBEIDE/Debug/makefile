@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := STM32F407VET6_REGISTER
+BUILD_ARTIFACT_NAME := STM32CUBEIDE
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-STM32F407VET6_REGISTER.elf \
+STM32CUBEIDE.elf \
 
 MAP_FILES += \
-STM32F407VET6_REGISTER.map \
+STM32CUBEIDE.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-STM32F407VET6_REGISTER.list \
+STM32CUBEIDE.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: STM32F407VET6_REGISTER.elf secondary-outputs
+main-build: STM32CUBEIDE.elf secondary-outputs
 
 # Tool invocations
-STM32F407VET6_REGISTER.elf STM32F407VET6_REGISTER.map: $(OBJS) $(USER_OBJS) E:\Learn_Embedded\STM32F4_Register\STM32CUBEIDE\STM32F407VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "STM32F407VET6_REGISTER.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Learn_Embedded\STM32F4_Register\STM32CUBEIDE\STM32F407VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F407VET6_REGISTER.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+STM32CUBEIDE.elf STM32CUBEIDE.map: $(OBJS) $(USER_OBJS) E:\Learn_Embedded\STM32F4_Register\STM32CUBEIDE\STM32F407VETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "STM32CUBEIDE.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"E:\Learn_Embedded\STM32F4_Register\STM32CUBEIDE\STM32F407VETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32CUBEIDE.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,14 +70,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-STM32F407VET6_REGISTER.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "STM32F407VET6_REGISTER.list"
+STM32CUBEIDE.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "STM32CUBEIDE.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) STM32F407VET6_REGISTER.elf STM32F407VET6_REGISTER.list STM32F407VET6_REGISTER.map default.size.stdout
+	-$(RM) STM32CUBEIDE.elf STM32CUBEIDE.list STM32CUBEIDE.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

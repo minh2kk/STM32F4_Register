@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>STM32F407VET6_REGISTER</name>
+	<name>STM32CUBEIDE</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -28,4 +28,16 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Libraries</name>
+			<type>2</type>
+			<location>E:/Learn_Embedded/STM32F4_Register/STM32CUBEIDE/Libraries</location>
+		</link>
+		<link>
+			<name>Inc/define.h</name>
+			<type>1</type>
+			<location>E:/Learn_Embedded/STM32F4_Register/STM32CUBEIDE/Inc/define.h</location>
+		</link>
+	</linkedResources>
 </projectDescription>
