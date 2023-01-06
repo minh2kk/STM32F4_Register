@@ -65,30 +65,11 @@ void HSE_Config(uint32_t PLL_M, uint32_t PLL_N, uint32_t PLL_P, uint32_t PLL_Q){
  */
 
 void RCC_PERIPH_Config(uint32_t Source, uint32_t Periph_Name, uint32_t NewState){
-
-	if(Source == RCC_AHB1ENR){
-		if(NewState == ENABLE){
-			RCC->AHB1ENR |= 1<<Periph_Name;
-		}
-		else if(NewState == DISABLE){
-			RCC->AHB1ENR &= ~(1<<Periph_Name);
-		}
+	uint32_t tmp;
+	tmp = (RCC_BASE_ADDR + Source);
+	if(NewState){
+		*((uint32_t*)(tmp)) = *((uint32_t*)(tmp))|(1<<Periph_Name);
+	}else{
+		*((uint32_t*)(tmp)) = *((uint32_t*)(tmp))&(~(1<<Periph_Name));
 	}
-	else if(Source == RCC_APB1ENR){
-		if(NewState == ENABLE){
-			RCC->APB1ENR |= 1<<Periph_Name;
-		}
-		else if(NewState == DISABLE){
-			RCC->APB1ENR &= ~(1<<Periph_Name);
-		}
-	}
-	else if(Source == RCC_APB2ENR){
-		if(NewState == ENABLE){
-			RCC->APB2ENR |= 1<<Periph_Name;
-		}
-		else if(NewState == DISABLE){
-			RCC->APB2ENR &= ~(1<<Periph_Name);
-		}
-	}
-
 }

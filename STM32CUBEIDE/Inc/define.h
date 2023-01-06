@@ -7,6 +7,9 @@
 #define SET		1
 #define RESET	0
 
+#define DISABLE		0
+#define ENABLE		1
+
 			/*Bus AHB1*/
 #define AHB1_BASE_ADDR			0x40020000UL
 /*GPIOx_BASE_ADDR*/

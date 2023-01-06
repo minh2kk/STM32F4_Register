@@ -40,7 +40,7 @@ typedef struct{
 
 }RCC_TypeDef;
 
-#define RCC_BASE_ADDR			0x40023800UL
+
 
 
 /*
@@ -97,17 +97,15 @@ typedef struct{
 #define CLOCK_TIM10			17
 #define CLOCK_TIM11			18
 
+#define RCC_BASE_ADDR			0x40023800UL
 #define RCC ((RCC_TypeDef*)RCC_BASE_ADDR)
 
 /*
  * Order of RCC_PERIPH_EN() Function
  * */
-#define RCC_AHB1ENR	0
-#define RCC_APB1ENR	1
-#define RCC_APB2ENR	2
-
-#define DISABLE		0
-#define ENABLE		1
+#define RCC_AHB1ENR	0x30
+#define RCC_APB1ENR	0x40
+#define RCC_APB2ENR	0x44
 
 
 
