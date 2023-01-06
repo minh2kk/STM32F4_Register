@@ -35,7 +35,7 @@ void GPIO_InitAlternate(GPIO_TypeDef* GPIOx, uint32_t Pinx, uint32_t Alternate, 
 	for(pinpos = 0; pinpos <  15; ++pinpos){
 		if((Pinx&(1<<pinpos)) != 0){
 			/*pinpos>>3: lay vi tri luu tru trong mang AFR 			[Ex: Pin 10 --(>>3)----> AFR[1]) ]
-			 * pinpos&0x7: Lay vi tri Bit trong dia chi cua AFR		[Ex: Pin 10 --(&0x07)--> 8(Bit thu 8)]
+			 * pinpos&0x07: Lay vi tri Bit trong dia chi cua AFR		[Ex: Pin 10 --(&0x07)--> 8(Bit thu 8)]
 			 * */
 			GPIOx->AFR[pinpos>>3] = (GPIOx->AFR[pinpos>>3]&(~(0x0F << (4 * (pinpos & 0x07))))) | (Alternate << (4 * (pinpos & 0x07)));
 		}
