@@ -46,24 +46,49 @@ typedef struct{
 #define PUPDR_PU		1
 #define PUPDR_PD		2
 
-typedef enum{
-	GPIO_PIN_0 	=  0,
-	GPIO_PIN_1 	=  1,
-	GPIO_PIN_2 	=  2,
-	GPIO_PIN_3 	=  3,
-	GPIO_PIN_4 	=  4,
-	GPIO_PIN_5 	=  5,
-	GPIO_PIN_6 	=  6,
-	GPIO_PIN_7 	=  7,
-	GPIO_PIN_8	=  8,
-	GPIO_PIN_9	=  9,
-	GPIO_PIN_10 = 10,
-	GPIO_PIN_11 = 11,
-	GPIO_PIN_12 = 12,
-	GPIO_PIN_13 = 13,
-	GPIO_PIN_14 = 14,
-	GPIO_PIN_15 = 15
-}Pin_Number;
+#define GPIO_Pin_0                 ((uint16_t)0x0001)  /* Pin 0 selected */
+#define GPIO_Pin_1                 ((uint16_t)0x0002)  /* Pin 1 selected */
+#define GPIO_Pin_2                 ((uint16_t)0x0004)  /* Pin 2 selected */
+#define GPIO_Pin_3                 ((uint16_t)0x0008)  /* Pin 3 selected */
+#define GPIO_Pin_4                 ((uint16_t)0x0010)  /* Pin 4 selected */
+#define GPIO_Pin_5                 ((uint16_t)0x0020)  /* Pin 5 selected */
+#define GPIO_Pin_6                 ((uint16_t)0x0040)  /* Pin 6 selected */
+#define GPIO_Pin_7                 ((uint16_t)0x0080)  /* Pin 7 selected */
+#define GPIO_Pin_8                 ((uint16_t)0x0100)  /* Pin 8 selected */
+#define GPIO_Pin_9                 ((uint16_t)0x0200)  /* Pin 9 selected */
+#define GPIO_Pin_10                ((uint16_t)0x0400)  /* Pin 10 selected */
+#define GPIO_Pin_11                ((uint16_t)0x0800)  /* Pin 11 selected */
+#define GPIO_Pin_12                ((uint16_t)0x1000)  /* Pin 12 selected */
+#define GPIO_Pin_13                ((uint16_t)0x2000)  /* Pin 13 selected */
+#define GPIO_Pin_14                ((uint16_t)0x4000)  /* Pin 14 selected */
+#define GPIO_Pin_15                ((uint16_t)0x8000)  /* Pin 15 selected */
+#define GPIO_Pin_All               ((uint16_t)0xFFFF)  /* All pins selected */
 
-void GPIO_Init(GPIO_TypeDef* GPIOx, Pin_Number Pinx, uint8_t Mode, uint8_t Otype, uint8_t Speed, uint8_t PuPd);
+/*GPIOx_BASE_ADDR*/
+#define GPIOA_BASE_ADDR			0x40020000UL
+#define GPIOB_BASE_ADDR			0x40020400UL
+#define GPIOC_BASE_ADDR			0x40020800UL
+#define GPIOD_BASE_ADDR			0x40020C00UL
+#define GPIOE_BASE_ADDR			0x40021000UL
+#define GPIOF_BASE_ADDR			0x40021400UL
+
+
+#define GPIOA 	((GPIO_TypeDef*)GPIOA_BASE_ADDR)
+#define GPIOB 	((GPIO_TypeDef*)GPIOB_BASE_ADDR)
+#define GPIOC 	((GPIO_TypeDef*)GPIOC_BASE_ADDR)
+#define GPIOD 	((GPIO_TypeDef*)GPIOD_BASE_ADDR)
+#define GPIOE 	((GPIO_TypeDef*)GPIOE_BASE_ADDR)
+#define GPIOF 	((GPIO_TypeDef*)GPIOF_BASE_ADDR)
+
+void GPIO_Init(GPIO_TypeDef* GPIOx, uint32_t Pinx, uint32_t Mode, uint32_t Otype, uint32_t Speed, uint32_t PuPd);
+void GPIO_InitAlternate(GPIO_TypeDef* GPIOx, uint32_t Pinx, uint32_t Alternate, uint32_t Otype, uint32_t Speed, uint32_t PuPd);
+void SetPinAsInput(GPIO_TypeDef* GPIOx, uint32_t Pinx);
+void SetPinAsOutput(GPIO_TypeDef* GPIOx, uint32_t Pinx);
+uint8_t  ReadDataPin(GPIO_TypeDef* GPIOx, uint32_t Pinx);
+uint16_t  ReadDataPort(GPIO_TypeDef* GPIOx);
+void WriteDataPin(GPIO_TypeDef* GPIOx, uint32_t Pinx, uint32_t NewState);
+void WriteDataPort(GPIO_TypeDef* GPIOx, uint32_t NewState);
+void TogglePin(GPIO_TypeDef* GPIOx, uint32_t Pinx);
+
+
 #endif /* INC_GPIO_H_ */

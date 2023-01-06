@@ -8,24 +8,28 @@
 
 
 #include "rcc.h"
+#include "gpio.h"
 
-
-
+uint32_t tmp[3];
 int main(void)
 {
 
 	HSE_Config(4, 168, 2, 4);
 
-//	tmp111 = (uint32_t*)(RCC_BASE_ADDR + RCC_AHB1ENR);
+
 
 
 	RCC_PERIPH_Config(RCC_AHB1ENR, CLOCK_GPIOA, ENABLE);
-	RCC_PERIPH_Config(RCC_AHB1ENR, CLOCK_GPIOB, ENABLE);
-	RCC_PERIPH_Config(RCC_AHB1ENR, CLOCK_GPIOA, DISABLE);
-	RCC_PERIPH_Config(RCC_APB2ENR, CLOCK_SDIO, ENABLE);
-	RCC_PERIPH_Config(RCC_AHB1ENR, CLOCK_GPIOB, DISABLE);
-	while(1){
-
+	GPIO_Init(GPIOA, GPIO_Pin_6|GPIO_Pin_7, MODER_OUT, OTYPER_PP, OSPEEDR_H, PUPDR_PU);
+	GPIOA->ODR &= ~(1<<6);
+	GPIOA->ODR |= 1<<7;
+	WriteDataPin(GPIOA, GPIO_Pin_6, RESET);
+	tmp[0] = ReadDataPin(GPIOA, GPIO_Pin_6);
+	tmp[1] = ReadDataPin(GPIOA, GPIO_Pin_7);
+	tmp[2] = ReadDataPort(GPIOA);
+ 	while(1){
+ 		TogglePin(GPIOA, GPIO_Pin_6 | GPIO_Pin_7);
+		for(int i = 0; i < 500000; ++i){}
 
 	}
 
