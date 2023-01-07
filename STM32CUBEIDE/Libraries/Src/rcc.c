@@ -68,8 +68,8 @@ void RCC_PERIPH_Config(uint32_t Source, uint32_t Periph_Name, uint32_t NewState)
 	uint32_t tmp;
 	tmp = (RCC_BASE_ADDR + Source);
 	if(NewState){
-		*((uint32_t*)(tmp)) = *((uint32_t*)(tmp))|(1<<Periph_Name);
+		*((uint32_t*)(tmp)) |= Periph_Name;
 	}else{
-		*((uint32_t*)(tmp)) = *((uint32_t*)(tmp))&(~(1<<Periph_Name));
+		*((uint32_t*)(tmp)) &= ~Periph_Name;
 	}
 }

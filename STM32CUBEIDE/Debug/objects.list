@@ -1,5 +1,6 @@
 "./Libraries/Src/gpio.o"
 "./Libraries/Src/rcc.o"
+"./Libraries/Src/systick.o"
 "./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
