@@ -9,6 +9,8 @@
 
 #include "rcc.h"
 #include "gpio.h"
+#include "dma.h"
+
 
 uint32_t tmp[3];
 int main(void)
@@ -23,6 +25,18 @@ int main(void)
 	GPIOA->ODR &= ~(1<<6);
 	GPIOA->ODR |= 1<<7;
 	GPIO_Init(GPIOE, GPIO_Pin_3|GPIO_Pin_4, MODER_IN, OTYPER_PP, OSPEEDR_H, PUPDR_PU);
+
+
+	DMA_Config dma;
+	dma.Channel = Channel_4;
+	dma.Dir = Dir_PeriphToMem;
+	dma.MSize = Size_HalfWord;
+	dma.PSize = Size_HalfWord;
+	dma.Priority = Priority_High;
+	dma.ModeCircular = Circular_EN;
+	dma.FlowController = Controller_By_DMA;
+	DMA_Init(DMA1, &dma);
+
  	while(1){
  		if(ReadDataPin(GPIOE, GPIO_Pin_3)==0){
  			while(ReadDataPin(GPIOE, GPIO_Pin_3)==0);

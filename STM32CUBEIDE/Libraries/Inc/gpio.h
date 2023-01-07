@@ -64,13 +64,7 @@ typedef struct{
 #define GPIO_Pin_15                ((uint16_t)0x8000)  /* Pin 15 selected */
 #define GPIO_Pin_All               ((uint16_t)0xFFFF)  /* All pins selected */
 
-/*GPIOx_BASE_ADDR*/
-#define GPIOA_BASE_ADDR			0x40020000UL
-#define GPIOB_BASE_ADDR			0x40020400UL
-#define GPIOC_BASE_ADDR			0x40020800UL
-#define GPIOD_BASE_ADDR			0x40020C00UL
-#define GPIOE_BASE_ADDR			0x40021000UL
-#define GPIOF_BASE_ADDR			0x40021400UL
+
 
 
 #define GPIOA 	((GPIO_TypeDef*)GPIOA_BASE_ADDR)

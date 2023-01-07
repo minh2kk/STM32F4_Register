@@ -1,3 +1,4 @@
+"./Libraries/Src/dma.o"
 "./Libraries/Src/gpio.o"
 "./Libraries/Src/rcc.o"
 "./Libraries/Src/systick.o"

@@ -97,7 +97,7 @@ typedef struct{
 #define CLOCK_TIM10			0x00020000UL
 #define CLOCK_TIM11			0x00040000UL
 
-#define RCC_BASE_ADDR			0x40023800UL
+
 #define RCC ((RCC_TypeDef*)RCC_BASE_ADDR)
 
 /*
