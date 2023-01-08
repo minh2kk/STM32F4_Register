@@ -28,15 +28,16 @@ typedef struct{
 }DMA_TypeDef;
 
 typedef struct{
-	__IO uin32_t Source;
+	__IO uint32_t Source;
 	__IO uint32_t Destination;
-	__IO uint_32_t Dir;
+	__IO uint32_t Dir;
 	__IO uint32_t MSize;
 	__IO uint32_t PSize;
 	__IO uint32_t Channel;
 	__IO uint32_t Priority;
 	__IO uint32_t ModeCircular;
 	__IO uint32_t FlowController;
+	__IO uint32_t NumDaTranfer;
 }DMA_Config;
 
 #define Priority_Low			0
@@ -48,8 +49,8 @@ typedef struct{
 #define Size_HalfWord			1
 #define Size_Word				2
 
-#define Circular_EN				0
-#define Circular_DIS			1
+#define Circular_EN				1
+#define Circular_DIS			0
 
 #define Dir_PeriphToMem			0
 #define Dir_MemToPeriph			1
@@ -67,10 +68,19 @@ typedef struct{
 #define Channel_6				6
 #define Channel_7				7
 
+#define Stream_0				0
+#define Stream_1				1
+#define Stream_2				2
+#define Stream_3				3
+#define Stream_4				4
+#define Stream_5				5
+#define Stream_6				6
+#define Stream_7				7
+
 #define DMA1 ((DMA_TypeDef*)DMA1_BASE_ADDR)
 #define DMA2 ((DMA_TypeDef*)DMA2_BASE_ADDR)
 
-void DMA_Init(DMA_TypeDef* DMAx, DMA_Config* Config);
-
+void DMA_Init(DMA_TypeDef* DMAx, DMA_Config* Config, uint32_t StreamNumber);
+void DMA_Cmd(DMA_TypeDef* DMAx, uint32_t StreamNumber, uint32_t NewState);
 
 #endif /* INC_DMA_H_ */
