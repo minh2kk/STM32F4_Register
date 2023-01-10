@@ -6,9 +6,24 @@
  */
 
 
-#ifndef INC_SYSTICK_H_
-#define INC_SYSTICK_H_
 
-#include "systick.h"
+#include <systick.h>
 
-#endif
+void SysTick_Init(uint32_t SourceDiv, uint32_t Exception){
+	SYSTICK->CTRL = Exception<<1 | SourceDiv<2;
+}
+
+void SysTick_Cmd(uint32_t NewState){
+	if(NewState == ENABLE){
+		SYSTICK->CTRL |= 1<<0;
+	}else{
+		SYSTICK->CTRL &= ~(1<<0);
+	}
+}
+
+void Delay(uint32_t DelayVal){
+	if(SYSTICK->CTRL&(1<<2)){
+
+	}
+}
+
